@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: base-service
+  profiles:
+    active: '@spring.profiles.active@'
+
+server:
+  port: 8000
+  tomcat:
+    connection-timeout: 36000
+  servlet:
+    context-path: /base
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true
+
