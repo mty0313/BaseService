@@ -1,8 +1,8 @@
-package top.mty.Service.Impl;
+package top.mty.service.Impl;
 
-import top.mty.Bean.Person;
+import top.mty.bean.Person;
 import top.mty.mapper.PersonMapper;
-import top.mty.Service.IPersonService;
+import top.mty.service.IPersonService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

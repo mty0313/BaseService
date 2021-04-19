@@ -1,7 +1,7 @@
 package top.mty.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import top.mty.Bean.Person;
+import top.mty.bean.Person;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

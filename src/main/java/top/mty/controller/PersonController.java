@@ -1,14 +1,14 @@
-package top.mty.Controller;
+package top.mty.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-import top.mty.Bean.Person;
-import top.mty.Service.IPersonService;
-import top.mty.Utils.R;
+import top.mty.bean.Person;
+import top.mty.service.IPersonService;
+import top.mty.utils.R;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,9 +30,9 @@ public class PersonController {
     IPersonService personService;
 
     @PostMapping("/getAll")
-    public R getAllData() {
+    public R getAllData(@RequestBody Map<String, Object> params) {
         List<Person> data = personService.list();
-        return R.ok(data);
+        return R.ok(params.get("queryUrl"), data);
     }
 
 }

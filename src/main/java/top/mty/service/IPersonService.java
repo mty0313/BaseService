@@ -1,6 +1,6 @@
-package top.mty.Service;
+package top.mty.service;
 
-import top.mty.Bean.Person;
+import top.mty.bean.Person;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

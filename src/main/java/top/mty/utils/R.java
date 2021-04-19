@@ -1,7 +1,6 @@
-package top.mty.Utils;
+package top.mty.utils;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author mty
@@ -46,9 +45,10 @@ public class R extends HashMap<String, Object> {
         return r;
     }
 
-    public static R ok(Object data) {
+    public static R ok(Object... data) {
         R r = new R();
-        r.put("data", data);
+        List<Object> dataList = new ArrayList<>(Arrays.asList(data));
+        r.put("data", dataList);
         return r;
     }
 
