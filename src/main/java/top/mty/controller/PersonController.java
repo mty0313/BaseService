@@ -29,10 +29,15 @@ public class PersonController {
     @Resource
     IPersonService personService;
 
-    @PostMapping("/getAll")
+    @PostMapping("/get-all")
     public R getAllData(@RequestBody Map<String, Object> params) {
         List<Person> data = personService.list();
         return R.ok(params.get("queryUrl"), data);
+    }
+
+    @PostMapping("/save-all")
+    public R saveAllData(@RequestBody Map<String, Object> params) {
+        return personService.saveOrUpdateEs(params);
     }
 
 }
