@@ -20,4 +20,11 @@ public interface IPersonService extends IService<Person> {
      * @return
      */
     R saveOrUpdateEs(Map<String, Object> params);
+
+    /**
+     * 条件查询
+     * @param params
+     * @return
+     */
+    R getList(Map<String, Object> params);
 }

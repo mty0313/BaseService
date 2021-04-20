@@ -35,4 +35,9 @@ public class PersonServiceImpl extends ServiceImpl<PersonMapper, Person> impleme
             return R.error();
         }
     }
+
+    @Override
+    public R getList(Map<String, Object> params) {
+        return esRequest.request(params);
+    }
 }

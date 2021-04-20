@@ -35,6 +35,11 @@ public class PersonController {
         return R.ok(params.get("queryUrl"), data);
     }
 
+    @PostMapping("/get-list")
+    public R getData(@RequestBody Map<String, Object> params) {
+        return personService.getList(params);
+    }
+
     @PostMapping("/save-all")
     public R saveAllData(@RequestBody Map<String, Object> params) {
         return personService.saveOrUpdateEs(params);
