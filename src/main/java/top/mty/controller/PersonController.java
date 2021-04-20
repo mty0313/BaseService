@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-import top.mty.bean.Person;
+import top.mty.entity.Person;
 import top.mty.service.IPersonService;
 import top.mty.utils.R;
 
@@ -29,10 +29,20 @@ public class PersonController {
     @Resource
     IPersonService personService;
 
-    @PostMapping("/getAll")
+    @PostMapping("/get-all")
     public R getAllData(@RequestBody Map<String, Object> params) {
         List<Person> data = personService.list();
         return R.ok(params.get("queryUrl"), data);
+    }
+
+    @PostMapping("/get-list")
+    public R getData(@RequestBody Map<String, Object> params) {
+        return personService.getList(params);
+    }
+
+    @PostMapping("/save-all")
+    public R saveAllData(@RequestBody Map<String, Object> params) {
+        return personService.saveOrUpdateEs(params);
     }
 
 }

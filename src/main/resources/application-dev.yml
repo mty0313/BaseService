@@ -43,3 +43,17 @@ spring:
         login-username: admin
         # 登录密码
         login-password: 123456
+
+esUrl: http://localhost:8080/esService
+
+redis:
+  host: localhost
+  port: 6379
+  password:
+  lettuce:
+    pool:
+      max-active: 5
+      max-idle: 5
+      max-wait: -1
+      min-idle: 0
+  timeout: 5000

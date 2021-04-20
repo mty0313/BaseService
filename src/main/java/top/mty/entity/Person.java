@@ -1,4 +1,4 @@
-package top.mty.bean;
+package top.mty.entity;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;

@@ -1,7 +1,9 @@
 package top.mty.service;
 
-import top.mty.bean.Person;
+import top.mty.entity.Person;
 import com.baomidou.mybatisplus.extension.service.IService;
+import top.mty.utils.R;
+import java.util.Map;
 
 /**
  * <p>
@@ -12,5 +14,17 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-04-19
  */
 public interface IPersonService extends IService<Person> {
+    /**
+     * es数据saveOrUpdate
+     * @param params
+     * @return
+     */
+    R saveOrUpdateEs(Map<String, Object> params);
 
+    /**
+     * 条件查询
+     * @param params
+     * @return
+     */
+    R getList(Map<String, Object> params);
 }
