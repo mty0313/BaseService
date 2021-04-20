@@ -1,6 +1,6 @@
 package top.mty.service;
 
-import top.mty.bean.Person;
+import top.mty.entity.Person;
 import com.baomidou.mybatisplus.extension.service.IService;
 import top.mty.utils.R;
 import java.util.Map;

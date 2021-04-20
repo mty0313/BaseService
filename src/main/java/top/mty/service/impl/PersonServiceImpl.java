@@ -1,6 +1,6 @@
-package top.mty.service.Impl;
+package top.mty.service.impl;
 
-import top.mty.bean.Person;
+import top.mty.entity.Person;
 import top.mty.common.http.EsRequest;
 import top.mty.mapper.PersonMapper;
 import top.mty.service.IPersonService;
