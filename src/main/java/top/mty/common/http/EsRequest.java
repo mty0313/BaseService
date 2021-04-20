@@ -46,7 +46,7 @@ public class EsRequest {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        String url = esUrl + "/api/base/pagingQuery2";
+        String url = esUrl + "/api/base/pagingQueryV2";
         logger.info("es calling: url: " + url);
         try {
             ResponseEntity<JSONObject> response = restTemplate
