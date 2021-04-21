@@ -20,8 +20,8 @@ create table base_data.search_param_config
     field_name varchar(128) null comment 'field_name',
     query_type varchar(32) null comment 'query_type',
     is_required tinyint(1) default 0 null comment '是否为必须的参数',
-    create_date timestamp null,
-    update_date timestamp null
+    create_date timestamp default CURRENT_TIMESTAMP not null,
+    update_date timestamp default CURRENT_TIMESTAMP not null
 )
     comment '查询参数配置';
 
