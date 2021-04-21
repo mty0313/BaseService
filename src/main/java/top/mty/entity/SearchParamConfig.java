@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author mty
- * @since 2021-04-20
+ * @since 2021-04-21
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -28,6 +28,11 @@ public class SearchParamConfig implements Serializable {
      * 接口
      */
     private String url;
+
+    /**
+     * fieldName 别名
+     */
+    private String fieldNameAlias;
 
     /**
      * field_name

@@ -1,8 +1,8 @@
 package top.mty.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import top.mty.entity.SearchParamConfig;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import top.mty.entity.SearchParamConfig;
 
 /**
  * <p>
@@ -10,7 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author mty
- * @since 2021-04-20
+ * @since 2021-04-21
  */
 @Mapper
 public interface SearchParamConfigMapper extends BaseMapper<SearchParamConfig> {
