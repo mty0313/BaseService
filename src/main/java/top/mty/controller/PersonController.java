@@ -1,6 +1,7 @@
 package top.mty.controller;
 
 
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,12 @@ public class PersonController {
 
     @PostMapping("/get-list")
     public R getData(@RequestBody Map<String, Object> params) {
+        // params非空校验
+        for (String key: params.keySet()) {
+            if (StringUtils.isEmpty(params.get(key).toString())) {
+                params.remove(key);
+            }
+        }
         return personService.getList(params);
     }
 
