@@ -31,7 +31,7 @@ public class SearchParamConfigServiceImpl extends ServiceImpl<SearchParamConfigM
         List<SearchParamConfig> configList = list();
         for (SearchParamConfig config : configList) {
             redisUtil.hset(config.getUrl(),
-                    config.getFieldName(),
+                    config.getFieldNameAlias(),
                     JSON.parseObject(JSON.toJSONString(config)));
         }
     }
