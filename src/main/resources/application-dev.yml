@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/base_data?useUnicode=true&useSSL=false&characterEncoding=utf8
-    username: root
-    password: mty1998
+    url: jdbc:mysql://rm-2ze05ws8sn60a213c1o.mysql.rds.aliyuncs.com:3306/base_data?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: mty
+    password: password
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       initial-size: 5
