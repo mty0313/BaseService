@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.data.annotation.Id;
 
 /**
  * <p>
@@ -18,6 +19,9 @@ import lombok.EqualsAndHashCode;
 public class SearchParamConfig implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @Id
+    private Integer id;
 
     /**
      * 索引名称

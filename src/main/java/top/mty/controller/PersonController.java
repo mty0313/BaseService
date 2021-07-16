@@ -1,6 +1,7 @@
 package top.mty.controller;
 
 
+import io.swagger.annotations.Api;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/person")
+@Api(tags = "person controller")
 public class PersonController {
 
     @Resource
@@ -36,6 +38,11 @@ public class PersonController {
         return R.ok(params.get("queryUrl"), data);
     }
 
+    /**
+     *
+     * @param params
+     * @return
+     */
     @PostMapping("/get-list")
     public R getData(@RequestBody Map<String, Object> params) {
         // params非空校验
