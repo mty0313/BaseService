@@ -20,7 +20,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo()).enable(true)
                 .select()
                 //apis： 添加swagger接口提取范围
-                .apis(RequestHandlerSelectors.basePackage("com.example"))
+                .apis(RequestHandlerSelectors.basePackage("top.mty"))
                 //.apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 .build();
@@ -28,9 +28,9 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("XX项目接口文档")
-                .description("XX项目描述")
-                .contact(new Contact("作者", "作者URL", "作者Email"))
+                .title("Base Service")
+                .description("缝合怪")
+                .contact(new Contact("mty", "https://blog.mty1998.top", "mty0313@126.com"))
                 .version("1.0")
                 .build();
     }
