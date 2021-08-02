@@ -2,6 +2,7 @@ package top.mty.controller;
 
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,8 @@ public class PersonController {
     @Resource
     IPersonService personService;
 
-    @PostMapping("/get-all")
+    @ApiOperation(value = "从数据库获取数据", httpMethod = "POST")
+    @PostMapping("/get-from-database")
     public R getAllData(@RequestBody Map<String, Object> params) {
         List<Person> data = personService.list();
         return R.ok(params.get("queryUrl"), data);
@@ -43,7 +45,8 @@ public class PersonController {
      * @param params
      * @return
      */
-    @PostMapping("/get-list")
+    @ApiOperation(value = "从ES获取数据", httpMethod = "POST")
+    @PostMapping("/get-from-es")
     public R getData(@RequestBody Map<String, Object> params) {
         // params非空校验
         for (String key: params.keySet()) {
@@ -54,7 +57,8 @@ public class PersonController {
         return personService.getList(params);
     }
 
-    @PostMapping("/save-all")
+    @ApiOperation(value = "保存数据到ES", httpMethod = "POST")
+    @PostMapping("/save-to-es")
     public R saveAllData(@RequestBody Map<String, Object> params) {
         return personService.saveOrUpdateEs(params);
     }
