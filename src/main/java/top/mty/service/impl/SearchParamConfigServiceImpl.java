@@ -11,6 +11,7 @@ import top.mty.utils.RedisUtil;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -29,11 +30,18 @@ public class SearchParamConfigServiceImpl extends ServiceImpl<SearchParamConfigM
     @PostConstruct
     public void init() {
         List<SearchParamConfig> configList = list();
-        for (SearchParamConfig config : configList) {
-            redisUtil.hset(config.getUrl(),
-                    config.getFieldNameAlias(),
-                    JSON.parseObject(JSON.toJSONString(config)));
-        }
+        List<String> queryUrls = configList.stream().distinct().map(SearchParamConfig::getUrl).collect(Collectors.toList());
+        queryUrls.forEach(url -> {
+            List data = redisUtil.hgetAll(url);
+            if (data.size() > 0) {
+                String queryUrl = JSON.parseObject(JSON.toJSONString(data.get(0))).get("url").toString();
+                // 把redis中的内容清除
+                redisUtil.del(queryUrl);
+            }
+        });
+        configList.forEach(config -> redisUtil.hset(config.getUrl(),
+                config.getFieldNameAlias(),
+                JSON.parseObject(JSON.toJSONString(config))));
     }
 
 
