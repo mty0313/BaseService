@@ -5,6 +5,7 @@ import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
+import top.mty.annotation.DefineAnnotation;
 
 /**
  * <p>
@@ -26,11 +27,13 @@ public class Person implements Serializable {
     /**
      * 姓名
      */
+    @DefineAnnotation(isRequire = true)
     private String name;
 
     /**
      * 年龄
      */
+    @DefineAnnotation(regular = "^[0-9]{10}$", defaultValue = "-1")
     private Integer age;
 
     /**
