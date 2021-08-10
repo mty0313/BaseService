@@ -4,16 +4,15 @@ package top.mty.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
 import top.mty.entity.Person;
 import top.mty.service.IPersonService;
 import top.mty.utils.R;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -61,6 +60,15 @@ public class PersonController {
     @PostMapping("/save-to-es")
     public R saveAllData(@RequestBody Map<String, Object> params) {
         return personService.saveOrUpdateEs(params);
+    }
+
+    @PostMapping("/update-database-es/{id}")
+    @ApiOperation(value = "通过id更新数据库和es")
+    public R updateDataById(@PathVariable("id") String id) {
+        Person person = personService.getById(id);
+        person.setUpdateDate(LocalDateTime.now());
+        personService.updateById(person);
+        return R.ok();
     }
 
 }

@@ -52,7 +52,7 @@ public class EsRequest {
             ResponseEntity<JSONObject> response = restTemplate
                     .postForEntity(url, params, JSONObject.class, httpHeaders);
             logger.info(String.valueOf(response));
-            return R.ok(response);
+            return R.ok(response.getBody());
         } catch (Exception e) {
             logger.error("es error");
             return R.error();
