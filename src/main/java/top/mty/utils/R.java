@@ -1,5 +1,8 @@
 package top.mty.utils;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -50,6 +53,61 @@ public class R extends HashMap<String, Object> {
         List<Object> dataList = new ArrayList<>(Arrays.asList(data));
         r.put("data", dataList);
         return r;
+    }
+
+    /**
+     * 包装List数据为前端适合的格式
+     * @param records
+     * @param req
+     * @param total
+     * @return
+     */
+    public static R listDataWrapper(List<?> records, Object req, Long total) {
+
+        Map<String, Object> data = new HashMap<>();
+
+        data.put("total", total);
+
+        Class<?> clazz = req.getClass();
+
+        Field[] fields = clazz.getDeclaredFields();
+
+        int current = -1;
+
+        int pageSize = -1;
+
+        try {
+            for (Field field: fields) {
+                if (field.getName().equals("pageIndex")) {
+                    Method m = req.getClass().getMethod(
+                            "get" + getMethodName(field.getName()));
+                    current = (Integer) m.invoke(req);
+                }
+                if (field.getName().equals("pageSize")) {
+                    Method m = req.getClass().getMethod(
+                            "get" + getMethodName(field.getName()));
+                    pageSize =  (Integer) m.invoke(req);
+                }
+            }
+        } catch (Exception e) {
+            return R.error();
+        }
+
+        if (current > -1 && pageSize > -1) {
+            data.put("total", total);
+            data.put("size", pageSize);
+            data.put("current", current);
+            data.put("pages", total / pageSize + 1);
+            data.put("records", records);
+        }
+
+        return R.ok(data);
+    }
+
+    public static String getMethodName(String fieldName) {
+        byte[] items = fieldName.getBytes(StandardCharsets.UTF_8);
+        items[0] = (byte) ((char) items[0] - 'a' + 'A');
+        return new String(items);
     }
 
 
